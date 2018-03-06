@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="707c083e-c1a2-4052-a3f7-c38476a8137c" name="dijkstra" url="http://dijkstra.cs.ttu.ee">
+        <fileTransfer host="dijkstra.cs.ttu.ee" port="22" rootFolder="/home/stkapt" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

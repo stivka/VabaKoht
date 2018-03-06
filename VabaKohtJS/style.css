@@ -1,0 +1,26 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 60%;
+    display: flex;
+}
+
+
+#calendarIFrame {
+    flex: 1;
+    width: 75%;
+    margin-left: auto;
+    border: 0 none;
+    padding: 0;
+    display: inline-block;
+}
+
+#form {
+    flex: 1;
+    width: 25%;
+    margin-right: auto;
+    padding: 10px;
+    display: inline-block;
+}
