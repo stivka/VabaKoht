@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		console.log( "ready!" );
+		$('#roomForm').on('submit', function(e){
+    		$.ajax({
+			    type: "POST",
+			    url: "http://localhost:8080/rooms",
+			    data: JSON.stringify({
+			    	id: $('#id').val(),
+			    	roomName: $('#roomName').val(),
+			    	companyName: $('#companyName').val()
+			    }),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    success: function(data){$('#databox').html("Successfully added room: " + data.id)},
+			    failure: function(errMsg) {
+			        alert(errMsg);
+			    }
+			});
+			e.preventDefault();
+		})
+	});
+
+	</script>
+	<title>Vabakoht</title>
+</head>
+<body>
+	<form id="roomForm" method="POST" action="http://localhost:8080/rooms">
+		<div><label for="id">ID: </label><input id="id" type="text" name="id"></div>
+		<div><label for="roomName">Room Name: </label><input id="roomName" type="text" name="roomName"></div>
+		<div><label for="companyName">Company Name: </label><input id="companyName" type="text" name="companyName"></div>
+		<input type="submit" name="Lisa Ruum">
+	</form>
+
+	<p id="databox"></p>
+</body>
+<html>
