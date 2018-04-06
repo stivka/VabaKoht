@@ -12,6 +12,32 @@ import javax.persistence.*;
 @Entity // makes a table in database called event
 public class Event {
 
+    @Id //private key
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
+    private String name;
+    private String start;
+    private String ending;
+
+    @ManyToOne
+    private Room room;
+
+    public Event() {
+    }
+
+    public Event(String id, String name, String start, String ending, String roomId) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.start = start;
+        this.ending = ending;
+        this.room = new Room(roomId, "", "");
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     public String getName() {
         return name;
     }
@@ -40,36 +66,11 @@ public class Event {
         return room;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
-    }
-
-    public Event() {}
-
-    public Event(Integer id, String name, String start, String ending, String roomId) {
-
-        this.name = name;
-        this.start = start;
-        this.ending = ending;
-        this.room = new Room(roomId, "","");
-    }
-
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
-
-    @Id //private key
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String name;
-    private String start;
-    private String ending;
-
-    @ManyToOne
-    private Room room;
-
 }

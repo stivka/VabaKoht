@@ -20,7 +20,8 @@ public class EventService {
 
     public List<Event> getAllEvents(String roomId) {
         List<Event> events = new ArrayList<>();
-        eventRepository.findByRoomId(roomId).forEach(events::add);
+        eventRepository.findByRoomId(roomId)
+                .forEach(events::add);
         return events;
     }
 
