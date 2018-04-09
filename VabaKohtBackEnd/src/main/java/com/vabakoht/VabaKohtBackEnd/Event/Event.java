@@ -1,9 +1,11 @@
 package com.vabakoht.VabaKohtBackEnd.Event;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.vabakoht.VabaKohtBackEnd.Room.Room;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
+import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Vemka on 3/15/2018.
@@ -20,56 +22,54 @@ public class Event {
         this.name = name;
     }
 
-    public String getStart() {
+    public Date getStart() {
         return start;
     }
 
-    public void setStart(String start) {
+    public void setStart(Date start) {
         this.start = start;
     }
 
-    public String getEnding() {
+    public Date getEnding() {
         return ending;
     }
 
-    public void setEnding(String ending) {
+    public void setEnding(Date ending) {
         this.ending = ending;
     }
 
-    public Room getRoom() {
-        return room;
+    public String getRoom() {
+        return roomId;
     }
 
-    public void setRoom(Room room) {
-        this.room = room;
+    public void setRoom(String roomId) {
+        this.roomId = roomId;
     }
 
-    public Event() {}
+    public Event() {
+    }
 
-    public Event(Integer id, String name, String start, String ending, String roomId) {
+    public Event(String name, Date start, Date ending, String roomId) {
 
         this.name = name;
         this.start = start;
         this.ending = ending;
-        this.room = new Room(roomId, "","");
+        this.roomId = roomId;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     @Id //private key
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     private String name;
-    private String start;
-    private String ending;
-
-    @ManyToOne
-    private Room room;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+    private Date start;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+    private Date ending;
+    private String roomId;
 
 }

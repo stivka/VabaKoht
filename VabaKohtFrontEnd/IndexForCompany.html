@@ -29,11 +29,16 @@
 	<title>Vabakoht</title>
 </head>
 <body>
+
+	<img src="logo_V1.png">
+	<h3>Palun, registreerige uus bändiruum.</h3>
+
+
 	<form id="roomForm" method="POST" action="http://localhost:8080/rooms">
 		<div><label for="id">ID: </label><input id="id" type="text" name="id"></div>
-		<div><label for="roomName">Room Name: </label><input id="roomName" type="text" name="roomName"></div>
-		<div><label for="companyName">Company Name: </label><input id="companyName" type="text" name="companyName"></div>
-		<input type="submit" name="Lisa Ruum">
+		<div><label for="roomName">Ruumi nimi: </label><input id="roomName" type="text" name="roomName"></div>
+		<div><label for="companyName">Firma Nimi: </label><input id="companyName" type="text" name="companyName"></div>
+		<input type="submit" name="Lisa Ruum" value="Lisa Ruum">
 	</form>
 
 	<p id="databox"></p>

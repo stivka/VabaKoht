@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		console.log( "ready!" );
+		$('#eventForm').on('submit', function(e){
+    		$.ajax({
+			    type: "POST",
+			    url: "http://localhost:8080/rooms/1/events",
+			    data: JSON.stringify({
+			    	name: $('name').val(),
+			    	start: $('#start').val(),
+			    	ending: $('#ending').val()
+			    }),
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+			    success: function(data){$('#databox').html("Successfully added event: " + data.name)},
+			    failure: function(errMsg) {
+			        alert(errMsg);
+			    }
+			});
+			e.preventDefault();
+		})
+	});
+
+	</script>
+	<title>Vabakoht</title>
+</head>
+<body>
+
+	<img src="logo_V1.png">
+	<h3>Palun, registreerige uus aeg.</h3>
+
+
+	<form id="eventForm" method="POST" action="http://localhost:8080/rooms/1/events">
+		<div><label for="id">Nimi: </label><input id="id" type="text" name="name"></div>
+		<div><label for="start">Algus aeg: </label><input id="start" type="text" name="start"></div>
+		<div><label for="ending">Lõpu aeg: </label><input id="ending" type="text" name="ending"></div>
+		<input type="submit" name="Broneeri" value="Broneeri">
+	</form>
+
+	<p id="databox"></p>
+</body>
+<html>

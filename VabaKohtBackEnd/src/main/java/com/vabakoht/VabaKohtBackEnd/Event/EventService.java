@@ -11,23 +11,25 @@ import java.util.Optional;
  * Created by Vemka on 3/16/2018.
  */
 
-@Service //spring business service
+//@Service //spring business service
+@Service("eventService")
 public class EventService {
 
     @Autowired
     private EventRepository eventRepository;
 
 
-    public List<Event> getAllEvents(String roomId) {
+    public List<Event> getAllEvents() {
         List<Event> events = new ArrayList<>();
-        eventRepository.findByRoomId(roomId).forEach(events::add);
+        eventRepository.findAll().forEach(events::add);
+       /* eventRepository.findByRoomId(roomId).forEach(events::add);*/
         return events;
     }
 
     //optional Maybe breakpoint
     public Optional<Event> getEvent(String name) {
        // return events.stream().filter(e -> e.getId().equals(name)).findFirst().get();
-        return eventRepository.findById(name);
+        return eventRepository.findByName(name);
 
     }
 
