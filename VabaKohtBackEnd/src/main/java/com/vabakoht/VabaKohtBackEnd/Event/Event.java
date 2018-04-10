@@ -1,7 +1,6 @@
 package com.vabakoht.VabaKohtBackEnd.Event;
 
 import com.vabakoht.VabaKohtBackEnd.Room.Room;
-import org.springframework.boot.autoconfigure.web.ResourceProperties;
 
 import javax.persistence.*;
 
@@ -15,35 +14,34 @@ public class Event {
     @Id //private key
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-    private String name;
+    private String title;
     private String start;
-    private String ending;
-
+    private String end;
     @ManyToOne
     private Room room;
 
     public Event() {
     }
 
-    public Event(String id, String name, String start, String ending, String roomId) {
+    public Event(String id, String title, String start, String end, String roomId) {
         super();
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.start = start;
-        this.ending = ending;
-        this.room = new Room(roomId, "", "");
+        this.end = end;
+        this.room = new Room(roomId, "");
     }
 
     public void setRoom(Room room) {
         this.room = room;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getStart() {
@@ -54,12 +52,12 @@ public class Event {
         this.start = start;
     }
 
-    public String getEnding() {
-        return ending;
+    public String getEnd() {
+        return end;
     }
 
-    public void setEnding(String ending) {
-        this.ending = ending;
+    public void setEnd(String end) {
+        this.end = end;
     }
 
     public Room getRoom() {

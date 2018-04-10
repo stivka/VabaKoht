@@ -13,15 +13,13 @@ public class Room {
     @Id //private key
     private String id;
     private String roomName;
-    private String companyName;
 
     public Room() {
     }
 
-    public Room(String id, String roomName, String companyName) {
+    public Room(String id, String roomName) {
         this.id = id;
         this.roomName = roomName;
-        this.companyName = companyName;
     }
 
     public String getId() {
@@ -38,13 +36,5 @@ public class Room {
 
     public void setRoomName(String roomName) {
         this.roomName = roomName;
-    }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
     }
 }

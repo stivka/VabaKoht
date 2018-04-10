@@ -14,9 +14,9 @@ public class EventController {
     @Autowired // needs dependency injection
     private EventService eventService;
 
-    @RequestMapping("/rooms/{id}/events")
-    public List<Event> getAllEvents(@PathVariable String id) {
-        return eventService.getAllEvents(id);
+    @RequestMapping("/rooms/{roomId}/events")
+    public List<Event> getAllEvents(@PathVariable String roomId) {
+        return eventService.getAllEvents(roomId);
     }
 
     @RequestMapping("/rooms/{roomId}/events/{id}")
@@ -26,13 +26,13 @@ public class EventController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/rooms/{roomId}/events")
     public void addEvent(@RequestBody Event event, @PathVariable String roomId) {
-        event.setRoom(new Room(roomId, "", ""));
+        event.setRoom(new Room(roomId, ""));
         eventService.addEvent(event);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/rooms/{roomId}/events/{id}")
     public void updateEvent(@RequestBody Event event, @PathVariable String id, @PathVariable String roomId) {
-        event.setRoom(new Room(roomId, "", ""));
+        event.setRoom(new Room(roomId, ""));
         eventService.updateEvent(event);
     }
 

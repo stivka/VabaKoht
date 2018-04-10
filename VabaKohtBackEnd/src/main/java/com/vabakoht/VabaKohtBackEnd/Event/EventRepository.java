@@ -10,6 +10,5 @@ import java.util.List;
 public interface EventRepository extends CrudRepository<Event,String>{
 
     public List<Event> findByStart(String start);
-    public List<Event> findByEnding(String ending);
     public List<Event> findByRoomId(String roomId);
 }

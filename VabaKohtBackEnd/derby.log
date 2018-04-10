@@ -6,7 +6,7 @@ Loaded from file:/C:/Users/Vemka/.m2/repository/org/apache/derby/derby/10.14.1.0
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_131-b11
 user.dir=C:\Users\Vemka\Documents\haridus\TTÜ\6_semester\tarkvara_tehnika\VabaKohtBackEnd
-os.name=Windows 10
+os.title=Windows 10
 os.arch=amd64
 os.version=10.0
 derby.system.home=null
