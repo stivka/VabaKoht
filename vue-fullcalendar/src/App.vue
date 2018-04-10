@@ -11,35 +11,33 @@
 <script>
   import moment from 'moment';
 
-  const ul = document.getElementById('events');
-  const url = 'http://localhost:8080/rooms/1/events/';
-  var events;
+  // const ul = document.getElementById('events');
+  // const url = 'http://localhost:8080/rooms/1/events/';
+  // let events = [];
+  //
+  // fetch(url)
+  //   .then(
+  //     function (response) {
+  //       if (response.status !== 200) {
+  //         console.log('Looks like there was a problem. Status Code: ' +
+  //           response.status);
+  //         return;
+  //       }
+  //
+  //       // Examine the text in the response
+  //       response.text().then(function (data) {
+  //         console.log(data);
+  //         events = data;
+  //       });
+  //     }
+  //   )
+  //   .catch(function (err) {
+  //     console.log('Fetch Error :-S', err);
+  //   });
+  //
+  // console.log(events);
 
-  fetch(url)
-    .then(
-      function (response) {
-        if (response.status !== 200) {
-          console.log('Looks like there was a problem. Status Code: ' +
-            response.status);
-          return;
-        }
-
-        // Examine the text in the response
-        response.text().then(function (data) {
-          console.log(data);
-          events = data;
-          console.log(events);
-        });
-      }
-    )
-    .catch(function (err) {
-      console.log('Fetch Error :-S', err);
-    });
-
-  console.log(events);
-
-
-  var events = [
+  let events = [
     {
       "id": "3",
       "title": "The LocalHosters",
@@ -52,19 +50,24 @@
     },
     {
       id: 2,
-      title: 'event2',
+      title: 'Koristuspäev',
       start: moment().add(-1, 'days'),
       end: moment().add(1, 'days'),
       allDay: true,
     },
     {
-      id: 3,
-      title: 'event3',
+      id: 4,
+      title: 'Uued: Madis & Mürgel',
       start: '2018-04-11T13:00:00',
       end: '2018-04-11T16:00:00',
       allDay: false,
     },
+    {"id":"4","title":"Failed Request","start":"Tue Apr 10 2018 16:00:00 GMT+0300 (FLE Daylight Time)","end":"Tue Apr 10 2018 19:00:00 GMT+0300 (FLE Daylight Time)","room":{"id":"1","roomName":"Trummituba"}}
   ];
+
+  // console.log(typeof events);
+  // Array.from(events);
+  // console.log(typeof Array.from(events));
 
   export default {
     name: 'app',
