@@ -5,6 +5,8 @@ import FullCalendar from 'vue-full-calendar';
 
 import App from './App';
 
+import axios from 'axios';
+
 Vue.config.productionTip = false;
 Vue.use(FullCalendar);
 
