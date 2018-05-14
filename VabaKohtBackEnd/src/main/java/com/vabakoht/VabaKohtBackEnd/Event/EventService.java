@@ -20,14 +20,15 @@ public class EventService {
 
     public List<Event> getAllEvents(String roomId) {
         List<Event> events = new ArrayList<>();
-        eventRepository.findByRoomId(roomId).forEach(events::add);
+        eventRepository.findByRoomId(roomId)
+                .forEach(events::add);
         return events;
     }
 
     //optional Maybe breakpoint
-    public Optional<Event> getEvent(String name) {
+    public Optional<Event> getEvent(String id) {
        // return events.stream().filter(e -> e.getId().equals(name)).findFirst().get();
-        return eventRepository.findById(name);
+        return eventRepository.findById(id);
 
     }
 
@@ -48,8 +49,8 @@ public class EventService {
         eventRepository.save(event);
     }
 
-    public void deleteEvent(String name) {
+    public void deleteEvent(String id) {
         //events.removeIf(e -> e.getId().equals(name));
-        eventRepository.deleteById(name);
+        eventRepository.deleteById(id);
     }
 }

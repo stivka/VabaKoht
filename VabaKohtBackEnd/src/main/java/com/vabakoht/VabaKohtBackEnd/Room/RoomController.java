@@ -17,27 +17,27 @@ public class RoomController {
     private RoomService roomService;
 
     @RequestMapping("/rooms")
-    public List<Room> getAllEvents() {
+    public List<Room> getAllRooms() {
         return roomService.getAllRooms();
     }
 
-    @RequestMapping("/rooms/{name}")
-    public Optional<Room> getEvent(@PathVariable String name) {
-        return roomService.getRoom(name);
+    @RequestMapping("/rooms/{id}")
+    public Optional<Room> getRoom(@PathVariable String id) {
+        return roomService.getRoom(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/rooms")
-    public void addEvent(@RequestBody Room room) {
+    public void addRoom(@RequestBody Room room) {
         roomService.addRoom(room);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/rooms/{name}")
-    public void updateEvent(@RequestBody Room room, @PathVariable String name) {
+    public void updateRoom(@RequestBody Room room, @PathVariable String name) {
         roomService.updateRoom(name,room);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/rooms/{name}")
-    public void deleteEvent(@PathVariable String name) {
+    public void deleteRoom(@PathVariable String name) {
         roomService.deleteRoom(name);
     }
 

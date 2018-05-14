@@ -8,39 +8,36 @@ import java.util.List;
 import java.util.Optional;
 
 
-
 @RestController
 public class EventController {
 
     @Autowired // needs dependency injection
     private EventService eventService;
 
-    @RequestMapping("/rooms/{id}/events")
-    public List<Event> getAllEvents(@PathVariable String id) {
-        return eventService.getAllEvents(id);
+    @RequestMapping("/rooms/{roomId}/events")
+    public List<Event> getAllEvents(@PathVariable String roomId) {
+        return eventService.getAllEvents(roomId);
     }
 
-    @RequestMapping("/rooms/{id}/events/{name}")
-    public Optional<Event> getEvent(@PathVariable String name) {
-        return eventService.getEvent(name);
+    @RequestMapping("/rooms/{roomId}/events/{id}")
+    public Optional<Event> getEvent(@PathVariable String id) {
+        return eventService.getEvent(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/rooms/{id}/events/")
-    public void addEvent(@RequestBody Event event, @PathVariable String id) {
-        event.setRoom(new Room(id,"",""));
+    @RequestMapping(method = RequestMethod.POST, value = "/rooms/{roomId}/events")
+    public void addEvent(@RequestBody Event event, @PathVariable String roomId) {
+        event.setRoom(new Room(roomId, ""));
         eventService.addEvent(event);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value = "/rooms/{id}/events/{name}")
-    public void updateEvent(@RequestBody Event event, @PathVariable String name, @PathVariable String id) {
-        event.setRoom(new Room(id,"",""));
+    @RequestMapping(method = RequestMethod.PUT, value = "/rooms/{roomId}/events/{id}")
+    public void updateEvent(@RequestBody Event event, @PathVariable String id, @PathVariable String roomId) {
+        event.setRoom(new Room(roomId, ""));
         eventService.updateEvent(event);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "/rooms/{id}/events/{name}")
-    public void deleteEvent(@PathVariable String name) {
-        eventService.deleteEvent(name);
+    @RequestMapping(method = RequestMethod.DELETE, value = "/rooms/{roomId}/events/{id}")
+    public void deleteEvent(@PathVariable String id) {
+        eventService.deleteEvent(id);
     }
-
-
 }

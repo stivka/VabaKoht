@@ -10,6 +10,18 @@ import javax.persistence.Id;
 @Entity // makes a table in database called event
 public class Room {
 
+    @Id //private key
+    private String id;
+    private String roomName;
+
+    public Room() {
+    }
+
+    public Room(String id, String roomName) {
+        this.id = id;
+        this.roomName = roomName;
+    }
+
     public String getId() {
         return id;
     }
@@ -25,28 +37,4 @@ public class Room {
     public void setRoomName(String roomName) {
         this.roomName = roomName;
     }
-
-    public String getCompanyName() {
-        return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public Room() {}
-
-    public Room(String id, String roomName, String companyName) {
-
-        this.id = id;
-        this.roomName = roomName;
-        this.companyName = companyName;
-    }
-
-    @Id //private key
-    private String id;
-    private String roomName;
-    private String companyName;
-
-
 }
