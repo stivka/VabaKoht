@@ -4,8 +4,10 @@ import com.vabakoht.VabaKohtBackEnd.Room.Room;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Null;
 import java.util.List;
 import java.util.Optional;
+
 
 
 @RestController
@@ -40,4 +42,5 @@ public class EventController {
     public void deleteEvent(@PathVariable String id) {
         eventService.deleteEvent(id);
     }
+
 }
