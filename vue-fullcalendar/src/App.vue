@@ -3,6 +3,8 @@
     <button @click="refreshEvents">Refresh</button>
     <button v-if="selected._id" @click="removeEvent">Remove</button>
     <pre>{{ selected }}</pre>
+    <input type="text" v-model="postBody" @change="postPost()"/>
+    <datepicker v-model="date"></datepicker>
     <full-calendar ref="calendar" :event-sources="eventSources" :events="events" @event-selected="eventSelected"
                    @event-created="eventCreated"
                    :config="config"></full-calendar>
@@ -12,6 +14,8 @@
 <script>
   import moment from 'moment';
   import * as $ from "babel-register";
+  import datepicker from 'vue-date';
+
 
 
   const ul = document.getElementById('events');
@@ -36,6 +40,7 @@
     data() {
       return {
         events: [],
+        date: '2018-05-15',
 
         config: {
           eventClick: (event) => {
@@ -51,6 +56,30 @@
         this.events = response.data
       })
     },
+
+    // Pushes posts to the server when called.
+    postPost() {
+      axios.post(url, {
+        body: this.postBody
+      })
+        .then(response => {
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+
+      // async / await version (postPost() becomes async postPost())
+      //
+      // try {
+      //   await axios.post(`http://jsonplaceholder.typicode.com/posts`, {
+      //     body: this.postBody
+      //   })
+      // } catch (e) {
+      //   this.errors.push(e)
+      // }
+    },
+
+    components: {datepicker},
 
     methods: {
 
@@ -75,7 +104,15 @@
     computed: {
       eventSources() {
         const self = this;
-
+        return [
+          {
+            events(start, end, timezone, callback) {
+              setTimeout(() => {
+                callback(self.events.filter(() => Math.random() > 0.5));
+              }, 1000);
+            },
+          },
+        ];
       },
     },
   };
