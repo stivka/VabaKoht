@@ -25,7 +25,7 @@ public class EventControllerTest {
     @Test
     public void getEvent() {
         EventService eventService = Mockito.mock(EventService.class);
-        Optional event = Mockito.mock(Optional.class);
+        Optional event = Optional.empty();
         Mockito.when(eventService.getEvent("13")).thenReturn(event);
         Optional result = eventService.getEvent("13");
         assertEquals(event, result);
@@ -35,16 +35,26 @@ public class EventControllerTest {
     public void addEvent() throws IOException {
         EventService eventService = Mockito.mock(EventService.class);
         Event event = new Event();
-        Mockito.doThrow(new IOException()).when(eventService).addEvent(event);
+        Mockito.doNothing().when(eventService).addEvent(Mockito.any());
         eventService.addEvent(event);
+        Mockito.verify(eventService, Mockito.atLeastOnce()).addEvent(Mockito.any());
     }
 
     @Test
     public void updateEvent() {
+        EventService eventService = Mockito.mock(EventService.class);
+        Event event = new Event();
+        Mockito.doNothing().when(eventService).updateEvent(Mockito.any());
+        eventService.updateEvent(event);
+        Mockito.verify(eventService, Mockito.atLeastOnce()).updateEvent(Mockito.any());
     }
 
     @Test
     public void deleteEvent() {
+        EventService eventService = Mockito.mock(EventService.class);
+        Mockito.doNothing().when(eventService).deleteEvent(Mockito.any());
+        eventService.deleteEvent("1");
+        Mockito.verify(eventService, Mockito.atLeastOnce()).deleteEvent(Mockito.any());
     }
 
 }
